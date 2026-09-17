@@ -1,0 +1,28 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "agente-seguranca-trabalho"
+version = "0.1.0"
+description = "Agente com LangGraph para pesquisa assistida em seguranca do trabalho."
+readme = "README.md"
+requires-python = ">=3.10"
+dependencies = [
+    "gradio>=5.0,<7.0",
+    "langchain>=0.3.0,<2.0",
+    "langchain-google-genai>=2.0.0,<5.0",
+    "langchain-tavily>=0.2.0,<1.0",
+    "langgraph>=0.2.0,<2.0",
+    "python-dotenv>=1.0.0,<2.0",
+]
+
+[project.scripts]
+agente-seguranca = "agente_seguranca.__main__:main"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/agente_seguranca"]
+
+[tool.pytest.ini_options]
+pythonpath = ["src"]
+testpaths = ["tests"]
